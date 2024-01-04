@@ -1,15 +1,12 @@
 from sqlalchemy import text
 from src.infra.db.settings.connection import DBConnectionHandler
 from .users_repository import UsersRepository
+from src.utils.generate_word import generate_word
 import random
-import string
 import pytest
 
 db_connection_handler = DBConnectionHandler()
 connection = db_connection_handler.get_engine().connect()
-
-def generate_word():
-    return ''.join(random.choice(string.ascii_lowercase) for _ in range(10))
 
 @pytest.mark.skip(reason="Sensive test")
 def test_insert_user():
